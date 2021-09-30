@@ -1,7 +1,9 @@
 import "./App.css";
+import React, { useState } from 'react';
 // import About from "./components/About";
 import Navbar from "./components/Navbar.js";
 import TextForm from "./components/TextForm.js";
+import Alert from "./components/Alert";
 
 function App() {
   //let name = "Hardik";
@@ -10,11 +12,24 @@ function App() {
   // so that if this variable stores input from user, no one is able to drop malware js into
   // the website. Can be overcome by using dangerouslysetinnerhtml but not recommended.
 
+  const [mode, setMode] = useState("light");
+
+  const toggleMode = () => {
+    if (mode === "light"){
+      setMode("dark");
+      document.body.style.backgroundColor = "#031a3c";
+    }else{
+      setMode("light");
+      document.body.style.backgroundColor = "white";
+    }
+  };
+
   return (
     <>
-      <Navbar title="TextUtils" />
+      <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode}/>
+      <Alert alert={alert} />
       <div className="container my-3">
-        <TextForm heading="Enter Text below to analyze: " />
+        <TextForm heading="Enter Text below to analyze: " mode={mode} />
         {/* <About /> */}
       </div>
     </>
