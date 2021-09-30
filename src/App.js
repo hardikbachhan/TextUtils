@@ -1,9 +1,16 @@
 import "./App.css";
-import React, { useState } from 'react';
-// import About from "./components/About";
+import React, { useState } from "react";
+import About from "./components/About";
 import Navbar from "./components/Navbar.js";
 import TextForm from "./components/TextForm.js";
 import Alert from "./components/Alert";
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
   //let name = "Hardik";
@@ -14,12 +21,12 @@ function App() {
 
   const [mode, setMode] = useState("light");
 
-  const [alert, setAlert] = useState(null);      // Alert is an object.
+  const [alert, setAlert] = useState(null); // Alert is an object.
 
   const showAlert = (message, type) => {
     setAlert({
       message: message,
-      type: type
+      type: type,
     });
     setTimeout(() => {
       setAlert(null);
@@ -27,11 +34,11 @@ function App() {
   };
 
   const toggleMode = () => {
-    if (mode === "light"){
+    if (mode === "light") {
       setMode("dark");
       document.body.style.backgroundColor = "#031a3c";
       showAlert("Dark mode enabled", "success");
-    }else{
+    } else {
       setMode("light");
       document.body.style.backgroundColor = "white";
       showAlert("Light mode enabled", "success");
@@ -40,12 +47,24 @@ function App() {
 
   return (
     <>
-      <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode}/>
-      <Alert alert={alert} />
-      <div className="container my-3">
-        <TextForm heading="Enter Text below to analyze: " mode={mode} showAlert={showAlert}/>
-        {/* <About /> */}
-      </div>
+      <Router>
+        <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
+        <Alert alert={alert} />
+        <div className="container my-3">
+          <Switch>
+            <Route exact path="/about">   {/*React exactly matches the path when exact keyword is used.*/}
+              <About />
+            </Route>
+            <Route exact path="/">
+              <TextForm
+                heading="Enter Text below to analyze: "
+                mode={mode}
+                showAlert={showAlert}
+              />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     </>
   );
 }
