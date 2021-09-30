@@ -10,22 +10,26 @@ export default function TextForm(props) {
     // setText("You have clicked on onUpClicked.")
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("Converted to Uppercase!", "success");
   };
 
   const onLoClick = () => {
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("Converted to Lowercase!", "success");
   };
 
   const onPunctuationClick = () => {
     const regex = /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g;
     const result = text.replace(regex, "");
     setText(result);
+    props.showAlert("Puntuations removed!", "success");
   };
 
   const onClearClick = () => {
     let newText = "";
     setText(newText);
+    props.showAlert("Text cleared!", "success");
   };
 
   const onUpChange = (event) => {
@@ -38,11 +42,24 @@ export default function TextForm(props) {
     let text = document.getElementById("myBox");
     text.select();
     navigator.clipboard.writeText(text.value);
+    props.showAlert("Copied to Clipboard!", "success");
   };
 
   const handleExtraSpaces = () => {
     const newText = text.split(/[ ]+/);
     setText(newText.join(" "));
+    props.showAlert("Extra Spaces removed!", "success");
+  };
+
+  const textWordCount = () => {
+    let wordArr = text.split(" ");
+    wordArr = wordArr.filter(word => {
+      if (word !== ""){
+        return word
+      }
+    });
+    // console.log(wordArr);
+    return wordArr.length;
   };
 
   return (
@@ -93,9 +110,9 @@ export default function TextForm(props) {
       >
         <h2>Your Text Details: </h2>
         <p>
-          {text.split(" ").length} words and {text.length} characters.
+          {textWordCount()} words and {text.length} characters.
         </p>
-        <p>{0.008 * text.split(" ").length} minutes read.</p>
+        <p>{0.008 * textWordCount()} minutes read.</p>
         <h2>Preview</h2>
         <p>{text.length>0?text:"Enter text in box above to show it here...."}</p>
       </div>

@@ -1,20 +1,25 @@
 import React from "react";
 
-function Alert() {
+function Alert(props) {
+
+    const capitalize = (message) => {
+        const lower = message.toLowerCase();
+        return lower.charAt(0).toUpperCase() + lower.slice(1);
+    };
+
   return (
-    <div
-      className="alert alert-warning alert-dismissible fade show"
+    props.alert && (<div
+      className={`alert alert-${props.alert.type} alert-dismissible fade show`}
       role="alert"
     >
-      <strong>Holy guacamole!</strong> You should check in on some of those
-      fields below.
-      <button
+      {capitalize(props.alert.type)}: <strong>{props.alert.message}</strong>
+      {/* <button
         type="button"
         className="btn-close"
         data-bs-dismiss="alert"
         aria-label="Close"
-      ></button>
-    </div>
+      ></button> */}
+    </div>)
   );
 }
 
