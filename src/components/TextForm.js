@@ -13,9 +13,20 @@ export default function TextForm(props) {
   };
 
   const onLoClick = () => {
-      let newText = text.toLowerCase();
-      setText(newText);
-  }
+    let newText = text.toLowerCase();
+    setText(newText);
+  };
+
+  const onPunctuationClick = () => {
+    const regex = /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g;
+    const result = text.replace(regex, "");
+    setText(result);
+  };
+
+  const onClearClick = () => {
+    let newText = "";
+    setText(newText);
+  };
 
   const onUpChange = (event) => {
     // console.log("Text area contents changed.")
@@ -41,6 +52,12 @@ export default function TextForm(props) {
         </button>
         <button className="btn btn-primary mx-1" onClick={onLoClick}>
           Convert to Lowercase
+        </button>
+        <button className="btn btn-primary mx-1" onClick={onPunctuationClick}>
+          Remove Punctuation
+        </button>
+        <button className="btn btn-primary mx-1" onClick={onClearClick}>
+          Clear Text
         </button>
       </div>
       <div className="container my-3">
