@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 export default function About(props) {
   // const [myStyle, setMyStyle] = useState({
@@ -35,7 +36,7 @@ export default function About(props) {
   return (
     <div
       className="container"
-      style={{color: props.mode === "light" ? "black" : "white"}}
+      style={{ color: props.mode === "light" ? "black" : "white" }}
     >
       <h2 className="my-3">About Us</h2>
       <div className="accordion" id="accordionExample">
@@ -59,10 +60,7 @@ export default function About(props) {
             aria-labelledby="headingOne"
             data-bs-parent="#accordionExample"
           >
-            <div
-              className="accordion-body"
-              style={myStyle}
-            >
+            <div className="accordion-body" style={myStyle}>
               <p>
                 Textutils gives you a way to analyze your text quickly and
                 efficiently. Be it hard count, character count or anything in
@@ -135,3 +133,11 @@ export default function About(props) {
     </div>
   );
 }
+
+About.propTypes = {
+  mode: PropTypes.string.isRequired
+};
+
+About.defaultProps = {
+  mode: "light"
+};

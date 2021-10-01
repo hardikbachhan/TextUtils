@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 function Alert(props) {
   const capitalize = (message) => {
@@ -27,3 +28,11 @@ function Alert(props) {
 }
 
 export default Alert;
+
+Alert.propTypes = {
+  alert: PropTypes.object.isRequired
+};
+
+Alert.defaultProps = {
+  mode: null,
+};
