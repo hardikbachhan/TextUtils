@@ -98,7 +98,7 @@ export default function TextForm(props) {
         </button>
       </div>
       <div
-        className="container my-3"
+        className="container my-5"
         style={{
           backgoundColor: props.mode === "light" ? "white" : "#031a3c",
           color: props.mode === "light" ? "black" : "white",

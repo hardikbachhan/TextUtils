@@ -4,6 +4,7 @@ import About from "./components/About";
 import Navbar from "./components/Navbar.js";
 import TextForm from "./components/TextForm.js";
 import Alert from "./components/Alert";
+import Footer from "./components/Footer";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -60,6 +61,7 @@ function App() {
             </Route>
           </Switch>
         </div>
+        <Footer mode={mode} />
       </Router>
     </>
   );
