@@ -53,11 +53,7 @@ export default function TextForm(props) {
 
   const textWordCount = () => {
     let wordArr = text.split(" ");
-    wordArr = wordArr.filter(word => {
-      if (word !== ""){
-        return word
-      }
-    });
+    wordArr = wordArr.filter((word) => word.length !== 0);
     // console.log(wordArr);
     return wordArr.length;
   };
@@ -82,22 +78,22 @@ export default function TextForm(props) {
             onChange={onUpChange}
           ></textarea>
         </div>
-        <button className="btn btn-primary mx-1" onClick={onUpClick}>
+        <button className="btn btn-primary mx-1 my-1" onClick={onUpClick}>
           Convert to Uppercase
         </button>
-        <button className="btn btn-primary mx-1" onClick={onLoClick}>
+        <button className="btn btn-primary mx-1 my-1" onClick={onLoClick}>
           Convert to Lowercase
         </button>
-        <button className="btn btn-primary mx-1" onClick={onPunctuationClick}>
+        <button className="btn btn-primary mx-1 my-1" onClick={onPunctuationClick}>
           Remove Punctuation
         </button>
-        <button className="btn btn-primary mx-1" onClick={onClearClick}>
+        <button className="btn btn-primary mx-1 my-1" onClick={onClearClick}>
           Clear Text
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleCopy}>
+        <button className="btn btn-primary mx-1 my-1" onClick={handleCopy}>
           Copy Text
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleExtraSpaces}>
+        <button className="btn btn-primary mx-1 my-1" onClick={handleExtraSpaces}>
           Remove Extra Spaces
         </button>
       </div>

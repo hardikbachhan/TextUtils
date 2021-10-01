@@ -5,12 +5,7 @@ import Navbar from "./components/Navbar.js";
 import TextForm from "./components/TextForm.js";
 import Alert from "./components/Alert";
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   //let name = "Hardik";
@@ -52,8 +47,9 @@ function App() {
         <Alert alert={alert} />
         <div className="container my-3">
           <Switch>
-            <Route exact path="/about">   {/*React exactly matches the path when exact keyword is used.*/}
-              <About />
+            <Route exact path="/about">
+              {/*React exactly matches the path when exact keyword is used.*/}
+              <About mode={mode} />
             </Route>
             <Route exact path="/">
               <TextForm
