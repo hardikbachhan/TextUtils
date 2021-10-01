@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 function Alert(props) {
   const capitalize = (message) => {
@@ -15,12 +15,6 @@ function Alert(props) {
           role="alert"
         >
           {capitalize(props.alert.type)}: <strong>{props.alert.message}</strong>
-          {/* <button
-        type="button"
-        className="btn-close"
-        data-bs-dismiss="alert"
-        aria-label="Close"
-      ></button> */}
         </div>
       )}
     </div>
@@ -30,7 +24,7 @@ function Alert(props) {
 export default Alert;
 
 Alert.propTypes = {
-  alert: PropTypes.object.isRequired
+  alert: PropTypes.object.isRequired,
 };
 
 Alert.defaultProps = {

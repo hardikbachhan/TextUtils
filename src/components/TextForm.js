@@ -6,8 +6,6 @@ export default function TextForm(props) {
   const [text, setText] = useState("");
 
   const onUpClick = () => {
-    // console.log("Button is clicked.");
-    // setText("You have clicked on onUpClicked.")
     let newText = text.toUpperCase();
     setText(newText);
     props.showAlert("Converted to Uppercase!", "success");
@@ -33,7 +31,6 @@ export default function TextForm(props) {
   };
 
   const onUpChange = (event) => {
-    // console.log("Text area contents changed.")
     let newText = event.target.value;
     setText(newText);
   };
@@ -52,11 +49,10 @@ export default function TextForm(props) {
   const textWordCount = () => {
     let wordArr = text.split(/\s+/);
     wordArr = wordArr.filter((word) => word.length !== 0);
-    // console.log(wordArr);
     return wordArr.length;
   };
 
-  let isTextEmpty = (text.length === 0)?true:false;
+  let isTextEmpty = text.length === 0 ? true : false;
 
   return (
     <>
@@ -68,32 +64,65 @@ export default function TextForm(props) {
         }}
       >
         <h2 className="mb-3">{props.heading}</h2>
-        <div className="my-3" >
+        <div className="my-3">
           <textarea
             className="form-control"
-            style={{backgroundColor: props.mode==="light"?"white":"black", color: props.mode==="light"?"black":"white"}}
+            style={{
+              backgroundColor: props.mode === "light" ? "white" : "black",
+              color: props.mode === "light" ? "black" : "white",
+            }}
             value={text}
             id="myBox"
             rows="8"
             onChange={onUpChange}
           ></textarea>
         </div>
-        <button className={`btn btn-primary mx-1 my-1 ${isTextEmpty?"disabled":""}`} onClick={onUpClick}>
+        <button
+          className={`btn btn-primary mx-1 my-1 ${
+            isTextEmpty ? "disabled" : ""
+          }`}
+          onClick={onUpClick}
+        >
           Convert to Uppercase
         </button>
-        <button className={`btn btn-primary mx-1 my-1 ${isTextEmpty?"disabled":""}`} onClick={onLoClick}>
+        <button
+          className={`btn btn-primary mx-1 my-1 ${
+            isTextEmpty ? "disabled" : ""
+          }`}
+          onClick={onLoClick}
+        >
           Convert to Lowercase
         </button>
-        <button className={`btn btn-primary mx-1 my-1 ${isTextEmpty?"disabled":""}`} onClick={onPunctuationClick}>
+        <button
+          className={`btn btn-primary mx-1 my-1 ${
+            isTextEmpty ? "disabled" : ""
+          }`}
+          onClick={onPunctuationClick}
+        >
           Remove Punctuation
         </button>
-        <button className={`btn btn-primary mx-1 my-1 ${isTextEmpty?"disabled":""}`} onClick={onClearClick}>
+        <button
+          className={`btn btn-primary mx-1 my-1 ${
+            isTextEmpty ? "disabled" : ""
+          }`}
+          onClick={onClearClick}
+        >
           Clear Text
         </button>
-        <button className={`btn btn-primary mx-1 my-1 ${isTextEmpty?"disabled":""}`} onClick={handleCopy}>
+        <button
+          className={`btn btn-primary mx-1 my-1 ${
+            isTextEmpty ? "disabled" : ""
+          }`}
+          onClick={handleCopy}
+        >
           Copy Text
         </button>
-        <button className={`btn btn-primary mx-1 my-1 ${isTextEmpty?"disabled":""}`} onClick={handleExtraSpaces}>
+        <button
+          className={`btn btn-primary mx-1 my-1 ${
+            isTextEmpty ? "disabled" : ""
+          }`}
+          onClick={handleExtraSpaces}
+        >
           Remove Extra Spaces
         </button>
       </div>
@@ -110,7 +139,7 @@ export default function TextForm(props) {
         </p>
         <p>{0.008 * textWordCount()} minutes read.</p>
         <h2>Preview</h2>
-        <p>{text.length>0?text:"Nothing to preview...."}</p>
+        <p>{text.length > 0 ? text : "Nothing to preview...."}</p>
       </div>
     </>
   );

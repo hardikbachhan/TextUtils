@@ -1,33 +1,7 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 export default function About(props) {
-  // const [myStyle, setMyStyle] = useState({
-  //   backgoundColor: "white", // : "#031a3c",
-  //   color: "black"
-  // });
-
-  // if (props.mode === "light") {
-  //   setMyStyle({backgoundColor: "white", color: "black"});
-  // } else if (props.mode === "dark") {
-  //   setMyStyle({backgoundColor: "black", color: "white"});
-  // }
-
-  // const [btnText, setBtnText] = useState("Enable Light Mode")
-  // const toggleStyle = () => {
-  //   const textColor = (myStyle.color === "black") ? "white" : "black";
-  //   const bgColor = (myStyle.backgroundColor === "black") ? "white" : "black";
-  //   setmyStyle({
-  //       color: textColor,
-  //       backgroundColor: bgColor
-  //   });
-  //   if (myStyle.color === "white"){
-  //       setBtnText("Enable Dark Mode");
-  //   }else{
-  //       setBtnText("Enable Light Mode");
-  //   }
-  // };
-
   let myStyle = {
     color: props.mode === "light" ? "black" : "white",
     backgroundColor: props.mode === "light" ? "white" : "#0c2b58",
@@ -135,9 +109,9 @@ export default function About(props) {
 }
 
 About.propTypes = {
-  mode: PropTypes.string.isRequired
+  mode: PropTypes.string.isRequired,
 };
 
 About.defaultProps = {
-  mode: "light"
+  mode: "light",
 };
