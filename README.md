@@ -4,9 +4,9 @@
 
 - Link: https://hbtextutils.netlify.app/
 
-Website to format Text
-Frontend implemented using React
-consisting of useState Hook.
+- Website to format Text.
+
+- Frontend implemented using React consisting of useState Hook.
 
 
 ## Frontend
